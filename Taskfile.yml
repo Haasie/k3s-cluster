@@ -1,0 +1,17 @@
+---
+version: "3"
+
+vars:
+  PROJECT_DIR:
+    sh: "git rev-parse --show-toplevel"
+  CLUSTER_DIR: "{{.PROJECT_DIR}}/cluster"
+  ANSIBLE_DIR: "{{.PROJECT_DIR}}/provision/ansible"
+  TERRAFORM_DIR: "{{.PROJECT_DIR}}/provision/terraform"
+
+env:
+  KUBECONFIG: "{{.PROJECT_DIR}}/provision/kubeconfig"
+
+includes:
+  ansible: .taskfiles/ansible.yml
+  pre-commit: .taskfiles/pre-commit.yml
+  terraform: .taskfiles/terraform.yml
