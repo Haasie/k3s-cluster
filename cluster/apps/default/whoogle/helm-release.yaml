@@ -1,0 +1,46 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: whoogle
+  namespace: default
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: whoogle
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  dependsOn:
+    - name: traefik
+      namespace: networking
+  values:
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "search-web"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-internal-auth@kubernetescrd"
+        hosts:
+          - host: "whoogle.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "whoogle.${SECRET_DOMAIN}"
+            secretName: "whoogle-tls"
+    resources:
+      requests:
+        cpu: 15m
+        memory: 204M
+      limits:
+        cpu: 250m
+        memory: 530M
