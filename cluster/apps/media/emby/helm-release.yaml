@@ -44,7 +44,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: jellyfin-config-v1
+        existingClaim: emby-config-v1
       media:
         enabled: true
         type: nfs
