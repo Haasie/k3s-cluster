@@ -1,0 +1,56 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: sonarr
+  namespace: media
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: sonarr
+      version: 16.2.2
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+  values:
+    image:
+      repository: ghcr.io/k8s-at-home/sonarr
+      tag: v3.0.8.1517
+      pullPolicy: IfNotPresent
+    env:
+      TZ: "${TIMEZONE}"
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-local-only-access@kubernetescrd"
+        hosts:
+          - host: "sonarr.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "sonarr.${SECRET_DOMAIN}"
+            secretName: "sonarr-tls"
+    persistence:
+      config:
+        enabled: true
+        existingClaim: sonarr-config-v1
+      media:
+        enabled: true
+        type: nfs
+        server: "192.168.1.4"
+        path: /mnt/pool-01/media
+        mountPath: /media
+        readOnly: false
+      incomplete:
+        enabled: true
+        type: emptyDir
