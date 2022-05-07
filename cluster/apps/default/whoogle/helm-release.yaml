@@ -9,9 +9,10 @@ spec:
   chart:
     spec:
       chart: whoogle
+      version: 0.7.2
       sourceRef:
         kind: HelmRepository
-        name: truecharts.org
+        name: k8s-at-home-charts
         namespace: flux-system
       interval: 5m
   dependsOn:
