@@ -23,26 +23,24 @@ spec:
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
-    service:
-      main:
-        ports:
-          http:
-            port: 8096
-          https:
-            enabled: true
-            port: 8920
+
     ingress:
       main:
         enabled: true
-        ingressClassName: "nginx"
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-local-only-access@kubernetescrd"
         hosts:
-          - host: &host "emby.${SECRET_PUBLIC_DOMAIN}"
+          - host: "emby.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - *host
+              - "emby.${SECRET_DOMAIN}"
+            secretName: "emby-tls"
     persistence:
       config:
         enabled: true
