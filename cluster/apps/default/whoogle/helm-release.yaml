@@ -9,7 +9,6 @@ spec:
   chart:
     spec:
       chart: whoogle
-      version: 0.7.2
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -19,6 +18,9 @@ spec:
     - name: traefik
       namespace: networking
   values:
+    image:
+      repository: benbusby/whoogle-search
+      tag: 0.5.4
     ingress:
       main:
         enabled: true
