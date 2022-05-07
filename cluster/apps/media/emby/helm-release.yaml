@@ -49,7 +49,7 @@ spec:
         enabled: true
         type: nfs
         server: "192.168.1.4"
-        path: /mnt/media
+        path: /mnt/pool-01/media
         mountPath: /media
         readOnly: true
       transcode:
