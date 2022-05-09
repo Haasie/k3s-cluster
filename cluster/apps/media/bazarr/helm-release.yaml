@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: sonarr
+  name: bazarr
   namespace: media
 spec:
   interval: 5m
   chart:
     spec:
-      chart: sonarr
-      version: 16.2.3
+      chart: bazarr
+      version: 10.5.1
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -18,8 +18,8 @@ spec:
     createNamespace: true
   values:
     image:
-      repository: ghcr.io/k8s-at-home/sonarr-develop
-      tag: v3.0.8.1517
+      repository: ghcr.io/k8s-at-home/bazarr
+      tag: v1.0.4
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
@@ -36,18 +36,18 @@ spec:
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: "networking-local-only-access@kubernetescrd"
         hosts:
-          - host: "sonarr.${SECRET_DOMAIN}"
+          - host: "bazarr.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "sonarr.${SECRET_DOMAIN}"
-            secretName: "sonarr-tls"
+              - "bazarr.${SECRET_DOMAIN}"
+            secretName: "bazarr-tls"
     persistence:
       config:
         enabled: true
-        existingClaim: sonarr-config-v1
+        existingClaim: bazarr-config-v1
       media:
         enabled: true
         type: nfs
@@ -55,6 +55,3 @@ spec:
         path: /mnt/pool-01/media
         mountPath: /media
         readOnly: false
-      incomplete:
-        enabled: true
-        type: emptyDir
