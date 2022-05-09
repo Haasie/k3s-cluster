@@ -45,4 +45,4 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: ombi-config-v1
+        existingClaim: ombi-config-v2
