@@ -23,6 +23,8 @@ spec:
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
+    podSecurityContext:
+      runAsUser: 568
       HOST_WHITELIST_ENTRIES: >-
         sabnzbd,
         sabnzbd.media,
