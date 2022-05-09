@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: overseerr
+  name: ombi
   namespace: media
 spec:
   interval: 5m
   chart:
     spec:
-      chart: overseerr
-      version: 5.3.2
+      chart: ombi
+      version: 11.3.1
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -18,8 +18,8 @@ spec:
     createNamespace: true
   values:
     image:
-      repository: ghcr.io/sct/overseerr
-      tag: 1.29.1
+      repository: ghcr.io/linuxserver/ombi
+      tag: version-v4.0.1430
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
@@ -30,17 +30,17 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-#          traefik.ingress.kubernetes.io/router.middlewares: "networking-local-only-access@kubernetescrd"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-local-only-access@kubernetescrd"
         hosts:
-          - host: "overseerr.${SECRET_DOMAIN}"
+          - host: "ombi.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "overseerr.${SECRET_DOMAIN}"
-            secretName: "overseerr-tls"
+              - "ombi.${SECRET_DOMAIN}"
+            secretName: "ombi-tls"
     persistence:
       config:
         enabled: true
-        existingClaim: overseerr-config-v1
+        existingClaim: ombi-config-v1
