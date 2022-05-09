@@ -18,8 +18,8 @@ spec:
     createNamespace: true
   values:
     image:
-      repository: ghcr.io/linuxserver/ombi
-      tag: version-v4.0.1430
+      repository: ghcr.io/truecharts/ombi
+      tag: v4.15.2
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
