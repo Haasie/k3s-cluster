@@ -1,14 +1,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: overseerr
+  name: readarr
   namespace: media
 spec:
   interval: 5m
   chart:
     spec:
-      chart: overseerr
-      version: 5.3.2
+      chart: readarr
+      version: 6.3.2
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -18,8 +18,8 @@ spec:
     createNamespace: true
   values:
     image:
-      repository: ghcr.io/sct/overseerr
-      tag: 1.29.1
+      repository: ghcr.io/k8s-at-home/readarr-nightly
+      tag: v0.1.1.1318
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
@@ -30,17 +30,27 @@ spec:
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-#          traefik.ingress.kubernetes.io/router.middlewares: "networking-local-only-access@kubernetescrd"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-local-only-access@kubernetescrd"
         hosts:
-          - host: "overseerr.${SECRET_DOMAIN}"
+          - host: "readarr.${SECRET_DOMAIN}"
             paths:
               - path: /
                 pathType: Prefix
         tls:
           - hosts:
-              - "overseerr.${SECRET_DOMAIN}"
-            secretName: "overseerr-tls"
+              - "readarr.${SECRET_DOMAIN}"
+            secretName: "readarr-tls"
     persistence:
       config:
         enabled: true
-        existingClaim: overseerr-config-v1
+        existingClaim: readarr-config-v1
+      media:
+        enabled: true
+        type: nfs
+        server: "192.168.1.4"
+        path: /mnt/pool-01/media
+        mountPath: /media
+        readOnly: false
+      incomplete:
+        enabled: true
+        type: emptyDir
