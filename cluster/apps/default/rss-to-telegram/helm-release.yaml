@@ -40,9 +40,6 @@ spec:
       config:
         enabled: true
         existingClaim: rss-to-telegram-config-v1
-      data:
-        enabled: true
-        existingClaim: rss-to-telegram-config-v1
         mountPath: /app/config
 
     ingress:
