@@ -21,7 +21,7 @@ spec:
     fullnameOverride: *app
     image:
       repository: bokker/rss.to.telegram
-      tag: 2.0.3
+      tag: "2.0.3"
     env:
       TZ: "${TIMEZONE}"
       DELAY: 60
