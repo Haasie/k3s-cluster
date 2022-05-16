@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: kah-common-chart
-      version: 1.1.1
+      version: 1.1.2
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -18,24 +18,18 @@ spec:
   install:
     createNamespace: true
   values:
-    fullnameOverride: *app
+    global:
+      nameOverride: *app
     image:
-      repository: bokker/rss.to.telegram
+      repository: docker.io/bokker/rss.to.telegram
       tag: "2.0.3"
     env:
       TZ: "${TIMEZONE}"
-      DELAY: 60
-      DEBUG: true
-      TOKEN:
-        valueFrom:
-          secretKeyRef:
-            name: rss-to-telegram
-            key: token
-      CHATID:
-        valueFrom:
-          secretKeyRef:
-            name: rss-to-telegram
-            key: chatid
+      DELAY: "60"
+      DEBUG: "true"
+    envFrom:
+      - secretRef:
+          name: *app
     persistence:
       config:
         enabled: true
@@ -47,21 +41,6 @@ spec:
     ingress:
       main:
         enabled: false
-        ingressClassName: "traefik"
-        annotations:
-          cert-manager.io/cluster-issuer: "letsencrypt-production"
-          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-          traefik.ingress.kubernetes.io/router.middlewares: "networking-local-only-access@kubernetescrd"
-        hosts:
-          - host: "rss-to-telegram.${SECRET_DOMAIN}"
-            paths:
-              - path: /
-                pathType: Prefix
-        tls:
-          - hosts:
-              - "rss-to-telegram.${SECRET_DOMAIN}"
-            secretName: "rss-to-telegram-tls"
-
     resources:
       requests:
         cpu: 15m
