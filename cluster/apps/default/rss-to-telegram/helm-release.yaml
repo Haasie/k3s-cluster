@@ -44,6 +44,11 @@ spec:
     service:
       main:
         enable: false
+    ingress:
+      main:
+        enabled: false
+        ingressClassName: "traefik"
+
     resources:
       requests:
         cpu: 15m
