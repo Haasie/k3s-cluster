@@ -37,7 +37,7 @@ spec:
         mountPath: /app/config
     service:
       main:
-        enable: false
+        enabled: false
     ingress:
       main:
         enabled: false
