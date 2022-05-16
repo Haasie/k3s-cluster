@@ -1,0 +1,72 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: &app rss-to-telegram
+  namespace: default
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: kah-common-chart
+      version: 1.1.1
+      sourceRef:
+        kind: HelmRepository
+        name: k8s-at-home-charts
+        namespace: flux-system
+      interval: 5m
+  install:
+    createNamespace: true
+  values:
+    fullnameOverride: *app
+    image:
+      repository: bokker/rss.to.telegram
+      tag: 2.0.3
+    env:
+      TZ: "${TIMEZONE}"
+      DELAY: 60
+      DEBUG: true
+      TOKEN:
+        valueFrom:
+          secretKeyRef:
+            name: rss-to-telegram
+            key: token
+      CHATID:
+        valueFrom:
+          secretKeyRef:
+            name: rss-to-telegram
+            key: chatid
+    persistence:
+      config:
+        enabled: true
+        existingClaim: rss-to-telegram-config-v1
+      data:
+        enabled: true
+        existingClaim: rss-to-telegram-config-v1
+        mountPath: /app/config
+
+    ingress:
+      main:
+        enabled: false
+        ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-local-only-access@kubernetescrd"
+        hosts:
+          - host: "rss-to-telegram.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "rss-to-telegram.${SECRET_DOMAIN}"
+            secretName: "rss-to-telegram-tls"
+
+    resources:
+      requests:
+        cpu: 15m
+        memory: 204M
+      limits:
+        cpu: 250m
+        memory: 530M
