@@ -41,7 +41,11 @@ spec:
         enabled: true
         existingClaim: rss-to-telegram-config-v1
         mountPath: /app/config
-
+    service:
+      main:
+        ports:
+          http:
+            port: 1337
     ingress:
       main:
         enabled: false
