@@ -23,10 +23,6 @@ spec:
       pullPolicy: IfNotPresent
     env:
       TZ: "${TIMEZONE}"
-    podSecurityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
     ingress:
       main:
         enabled: true
@@ -47,4 +43,4 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: esphome-config-v1
+        existingClaim: esphome-config-v2
