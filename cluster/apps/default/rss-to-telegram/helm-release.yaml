@@ -43,13 +43,24 @@ spec:
         mountPath: /app/config
     service:
       main:
-        ports:
-          http:
-            port: 1337
+        enable: false
     ingress:
       main:
         enabled: false
         ingressClassName: "traefik"
+        annotations:
+          cert-manager.io/cluster-issuer: "letsencrypt-production"
+          traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+          traefik.ingress.kubernetes.io/router.middlewares: "networking-local-only-access@kubernetescrd"
+        hosts:
+          - host: "rss-to-telegram.${SECRET_DOMAIN}"
+            paths:
+              - path: /
+                pathType: Prefix
+        tls:
+          - hosts:
+              - "rss-to-telegram.${SECRET_DOMAIN}"
+            secretName: "rss-to-telegram-tls"
 
     resources:
       requests:
