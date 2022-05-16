@@ -33,7 +33,7 @@ spec:
     persistence:
       config:
         enabled: true
-        existingClaim: rss-to-telegram-config-v1
+        existingClaim: rss-to-telegram-config-v2
         mountPath: /app/config
     service:
       main:

@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: rss-to-telegram-config-v1
+  name: rss-to-telegram-config-v2
   namespace: default
 spec:
   accessModes:
