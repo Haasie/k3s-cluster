@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: kah-common-chart
-      version: 1.1.2
+      version: 1.1.1
       sourceRef:
         kind: HelmRepository
         name: k8s-at-home-charts
@@ -43,9 +43,7 @@ spec:
         mountPath: /app/config
     service:
       main:
-        ports:
-          http:
-            port: 1337
+        enable: false
     ingress:
       main:
         enabled: false
