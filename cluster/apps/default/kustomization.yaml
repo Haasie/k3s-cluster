@@ -5,4 +5,5 @@ resources:
   - echo-server
   - hajimari
   - whoogle
-  - rss-to-telegram
+#  - rss-to-telegram
+  - rsst-to-telegram
