@@ -36,7 +36,7 @@ spec:
     env:
       TZ: "${TIMEZONE}"
       DJANGO_TIME_ZONE: Europe/Amsterdam
-      DJANGO_DATABASE_USER: postgresql
+      DJANGO_DATABASE_USER: postgres
       # DJANGO_DATABASE_PASSWORD: set by valuesFrom
       DJANGO_DATABASE_HOST: postgres-postgresql.home-automation.svc.cluster.local
       DJANGO_DATABASE_PORT: "5432"
