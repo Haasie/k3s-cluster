@@ -18,8 +18,8 @@ spec:
   install:
     createNamespace: true
   values:
-    db:
-      host: dsmr-reader-database-postgresql.home-automation
+    home-automation:
+      host: dsmr-reader-database-postgresql
     env:
       TZ: "${TIMEZONE}"
     ingress:
