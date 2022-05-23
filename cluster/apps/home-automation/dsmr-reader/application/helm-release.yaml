@@ -47,6 +47,8 @@ spec:
         type: hostPath
         hostPath: /dev/serial/by-id/usb-FTDI_FT232R_USB_UART_AG4XPUJC-if00-port0
         hostPathType: CharDevice
+    securityContext:
+      privileged: true
     ingress:
       main:
         enabled: true
