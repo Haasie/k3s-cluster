@@ -18,13 +18,11 @@ spec:
   install:
     createNamespace: true
   values:
-    global:
-      nameOverride: *app
+    auth:
+      database: dsmr-reader
+      existingSecret: dsmr-reader
     env:
       TZ: "${TIMEZONE}"
-    envFrom:
-      - secretRef:
-          name: *app
     persistence:
       config:
         enabled: true
