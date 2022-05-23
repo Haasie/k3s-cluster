@@ -23,7 +23,7 @@ spec:
         enabled: true
         existingClaim: dsmr-reader-postgresql
 # for exposing external
-#    primary:
-#      service:
-#        type: LoadBalancer
-#        loadBalancerIP: "192.168.1.13"
+    primary:
+      service:
+        type: LoadBalancer
+        loadBalancerIP: "192.168.1.13"
