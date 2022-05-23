@@ -7,4 +7,4 @@ resources:
 #  - dsmr-reader
 #  - zigbee2mqtt
   - esphome
-#  - postgres
+  - postgres
