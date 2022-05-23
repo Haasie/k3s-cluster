@@ -18,7 +18,7 @@ spec:
   install:
     createNamespace: true
   values:
-    home-automation:
+    db:
       host: dsmr-reader-database-postgresql
     env:
       TZ: "${TIMEZONE}"
