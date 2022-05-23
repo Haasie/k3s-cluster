@@ -17,7 +17,7 @@ spec:
       interval: 5m
   values:
     auth:
-      database: dsmr-data
+      database: dsmr-reader
       existingSecret: dsmr-reader-database
       persistence:
         enabled: true
