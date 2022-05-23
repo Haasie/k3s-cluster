@@ -31,7 +31,7 @@ spec:
           [
             "sh",
             "-c",
-            'until nc -vz postgres.home-automation 5432; do echo "Waiting for postgresql..."; sleep 3; done;',
+            'until nc -vz postgres-postgresql.home-automation.svc.cluster.local 5432; do echo "Waiting for postgresql..."; sleep 3; done;',
           ]
     env:
       TZ: "${TIMEZONE}"
