@@ -22,3 +22,8 @@ spec:
       persistence:
         enabled: true
         existingClaim: dsmr-reader-postgresql
+    service:
+      main:
+        ports:
+          http:
+            port: 5432
