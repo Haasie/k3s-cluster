@@ -25,5 +25,4 @@ spec:
 
     primary:
       service:
-        type: ClusterIP
         loadBalancerIP: "192.168.1.13"
