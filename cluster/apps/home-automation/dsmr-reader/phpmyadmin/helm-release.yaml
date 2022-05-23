@@ -37,5 +37,5 @@ spec:
                 pathType: Prefix
         tls:
           - hosts:
-              - "radarr.${SECRET_DOMAIN}"
+              - "phpadmin.${SECRET_DOMAIN}"
             secretName: "phpadmin-tls"
