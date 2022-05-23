@@ -25,7 +25,5 @@ spec:
 
     primary:
       service:
-        type: NodePort
-        ports:
-          postgresql: 5432
+        type: ClusterIP
         loadBalancerIP: "192.168.1.13"
