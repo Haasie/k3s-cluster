@@ -30,11 +30,11 @@ spec:
   valuesFrom:
     - kind: Secret
       name: influxdb-sec
-      valuesKey: admin-username
+      valuesKey: admin.username
       targetPath: env.AUTH.ADMIN.USERNAME
       optional: false
     - kind: Secret
       name: influxdb-sec
-      valuesKey: admin-password
+      valuesKey: admin.password
       targetPath: env.AUTH.ADMIN.PASSWORD
       optional: false
