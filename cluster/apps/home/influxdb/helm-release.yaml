@@ -34,10 +34,11 @@ spec:
         existingClaim: influxdb-stor
     service:
       main:
-        enabled: false
+        enabled: true
     ingress:
       main:
         enabled: true
+        primary: true
         ingressClassName: "traefik"
         annotations:
           cert-manager.io/cluster-issuer: "letsencrypt-production"
