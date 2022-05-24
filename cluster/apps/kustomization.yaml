@@ -13,3 +13,4 @@ resources:
   - networking
   - flux-system
   - media
+  - home
