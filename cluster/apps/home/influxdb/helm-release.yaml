@@ -34,7 +34,8 @@ spec:
         existingClaim: influxdb-stor
     service:
       main:
-        enabled: true
+        enabled: false
+
     ingress:
       main:
         enabled: true
