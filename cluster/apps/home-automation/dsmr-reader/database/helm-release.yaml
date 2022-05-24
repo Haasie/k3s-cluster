@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: postgresql
-      version: 11.14.0
+      version: 14.3.0
       sourceRef:
         kind: HelmRepository
         name: bitnami-charts
@@ -21,7 +21,7 @@ spec:
       existingSecret: dsmr-reader-database
       persistence:
         enabled: true
-        existingClaim: dsmr-reader-postgresql
+        existingClaim: dsmr-reader-postgres
 # for exposing external
     primary:
       service:
