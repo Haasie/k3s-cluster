@@ -21,7 +21,7 @@ spec:
       existingSecret: dsmr-reader-database
       persistence:
         enabled: true
-        existingClaim: dsmr-reader-postgresql
+        existingClaim: dsmr-reader-postgres-1
 # for exposing external
     primary:
       service:
