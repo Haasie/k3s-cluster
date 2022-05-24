@@ -4,6 +4,8 @@ kind: Kustomization
 resources:
 #  - home-assitant
 #  - mosquitto
-  - dsmr-reader
+#  - dsmr-reader
 #  - zigbee2mqtt
-  - esphome
+#  - esphome
+  - influxdb
+  
