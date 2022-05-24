@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: dsmr-reader-postgresql
+  name: dsmr-reader-postgres
   namespace: home-automation
 spec:
   accessModes:
