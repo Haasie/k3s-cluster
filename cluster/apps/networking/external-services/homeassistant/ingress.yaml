@@ -9,6 +9,12 @@ metadata:
     app.kubernetes.io/instance: *app
 spec:
   ingressClassName: traefik
+  annotations:
+  cert-manager.io/cluster-issuer: "letsencrypt-production"
+  hajimari.io/enable: "true"
+  hajimari.io/icon: "house"
+  traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+  traefik.ingress.kubernetes.io/router.middlewares: "networking-cloudflare-only@kubernetescrd"
   rules:
     - host: &host "homeassistant.${SECRET_DOMAIN}"
       http:
