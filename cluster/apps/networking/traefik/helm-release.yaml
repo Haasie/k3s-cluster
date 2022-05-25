@@ -82,7 +82,7 @@ spec:
         sniStrict: true
     pilot:
       enabled: true
-      token: "${PILOT_TOKEN)"
+      token: "${PILOT_TOKEN}"
     experimental:
       plugins:
         enabled: false
