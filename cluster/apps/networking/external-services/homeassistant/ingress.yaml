@@ -7,14 +7,14 @@ metadata:
   labels:
     app.kubernetes.io/name: *app
     app.kubernetes.io/instance: *app
+  annotations:
+    ert-manager.io/cluster-issuer: "letsencrypt-production"
+    hajimari.io/enable: "true"
+    hajimari.io/icon: "house-variant"
+    traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
+    traefik.ingress.kubernetes.io/router.middlewares: "networking-cloudflare-only@kubernetescrd"
 spec:
   ingressClassName: "traefik"
-  annotations:
-  cert-manager.io/cluster-issuer: "letsencrypt-production"
-  hajimari.io/enable: "true"
-  hajimari.io/icon: "home-variant"
-  traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-  traefik.ingress.kubernetes.io/router.middlewares: "networking-cloudflare-only@kubernetescrd"
   rules:
     - host: &host "homeassistant.${SECRET_DOMAIN}"
       http:
