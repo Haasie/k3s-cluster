@@ -33,7 +33,7 @@ spec:
           - default
           - networking
           - media
-      name: "you"
+      name: "Haasie"
       customApps:
         - name: Home Assistant
           url: https://homeassistant.haasie.nl
