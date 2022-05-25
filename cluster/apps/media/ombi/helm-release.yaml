@@ -28,6 +28,8 @@ spec:
         enabled: true
         ingressClassName: "traefik"
         annotations:
+          hajimari.io/enable: "true"
+          hajimari.io/icon: "search-web"
           cert-manager.io/cluster-issuer: "letsencrypt-production"
           traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
           traefik.ingress.kubernetes.io/router.middlewares: "networking-cloudflare-only@kubernetescrd"
