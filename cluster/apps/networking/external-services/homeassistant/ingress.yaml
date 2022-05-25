@@ -8,7 +8,7 @@ metadata:
     app.kubernetes.io/name: *app
     app.kubernetes.io/instance: *app
 spec:
-  ingressClassName: traefik
+  ingressClassName: "traefik"
   annotations:
   cert-manager.io/cluster-issuer: "letsencrypt-production"
   hajimari.io/enable: "true"
