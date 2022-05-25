@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: &app home-assistant
+  name: &app homeassistant
   namespace: networking
   labels:
     app.kubernetes.io/name: *app
