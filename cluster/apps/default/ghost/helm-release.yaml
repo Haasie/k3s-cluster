@@ -48,8 +48,8 @@ spec:
               - "blog.${SECRET_DOMAIN}"
             secretName: "blog-tls"
     persistence:
-      config:
+      content:
         enabled: true
-        existingClaim: ghost-cofig
+        existingClaim: ghost-config
     mariadb:
       enable: false
