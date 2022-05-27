@@ -7,3 +7,4 @@ resources:
   - whoogle
 #  - rss-to-telegram
   - rsst-to-telegram
+  - ghost
