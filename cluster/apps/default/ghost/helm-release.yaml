@@ -20,6 +20,9 @@ spec:
   values:
     global:
       nameOverride: *app
+    image:
+      reposistory: ghost
+      tag: "5.0.0"
     env:
       TZ: "${TIMEZONE}"
       url: "https://blog.${SECRET_DOMAIN}"
