@@ -14,7 +14,7 @@ metadata:
 spec:
   ingressClassName: "traefik"
   rules:
-    - host: &host "hyper.${SECRET_DOMAIN}"
+    - host: &host "proxmox.${SECRET_DOMAIN}"
       http:
         paths:
           - path: /
@@ -27,4 +27,4 @@ spec:
   tls:
     - hosts:
         - *host
-      secretName: "hyper-tls"
+      secretName: "proxmox-tls"
