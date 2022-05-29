@@ -38,6 +38,12 @@ spec:
         - name: Home Assistant
           url: https://homeassistant.haasie.nl
           icon: home-variant
+        - name: Truenas
+          url: https://truenas.haasie.nl
+          icon: nas
+        - name: Proxmox
+          url: https://proxmox.haasie.nl
+          icon: server
       groups:
         - name: Communicate
           links:
