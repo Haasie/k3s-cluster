@@ -44,6 +44,9 @@ spec:
         - name: Proxmox
           url: https://proxmox.haasie.nl
           icon: server
+        - name: Pi-hole
+          url: pihole.haasie.nl
+          icon: pi-hole
       groups:
         - name: Communicate
           links:
