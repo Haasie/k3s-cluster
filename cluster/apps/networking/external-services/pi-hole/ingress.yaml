@@ -17,14 +17,13 @@ spec:
     - host: &host "pihole.${SECRET_DOMAIN}"
       http:
         paths:
-          - path: /
+          - path: /admin
             pathType: Prefix
             backend:
               service:
                 name: *app
                 port:
                   number: 80
-                path: /admin
   tls:
     - hosts:
         - *host
