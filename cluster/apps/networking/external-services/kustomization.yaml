@@ -5,4 +5,4 @@ resources:
   - homeassistant
   - proxmox
   - truenas
-  - pi-hole
+  - pihole
