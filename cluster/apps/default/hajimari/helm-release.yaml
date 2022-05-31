@@ -45,7 +45,7 @@ spec:
           url: https://proxmox.haasie.nl
           icon: server
         - name: Pihole
-          url: https://pihole.haasie.nl
+          url: http://pi.hole/admin
           icon: pi-hole
       groups:
         - name: Communicate
