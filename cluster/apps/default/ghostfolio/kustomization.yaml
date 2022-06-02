@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - secret.sops.yaml
-  - postgres-db-pvc.yaml
-  - postgres-db.yaml
+  - ghostfolio-post-db.yaml
+  - ghostfolio-post-db-pvc.yaml

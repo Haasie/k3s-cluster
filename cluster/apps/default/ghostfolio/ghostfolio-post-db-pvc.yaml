@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ghostfolio-db
+  name: ghostfolio-data
   namespace: default
 spec:
   accessModes:
@@ -10,3 +10,4 @@ spec:
   resources:
     requests:
       storage: 8Gi
+  storageClassName: local-path

@@ -24,7 +24,7 @@ spec:
       repository: ghostfolio/ghostfolio
       tag: 1.155.0
     env:
-      TZ: "${TZ}"
+      TZ: "${TIMEZONE}"
     envFrom:
       - secretRef:
           name: *app
@@ -32,7 +32,7 @@ spec:
       main:
         ports:
           http:
-            port: 5432
+            port: 3333
 
     ingress:
       main:
