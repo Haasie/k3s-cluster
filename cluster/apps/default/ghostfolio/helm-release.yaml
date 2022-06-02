@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: &app ghostfolio
-  namespace: default
+  namespace: home
 spec:
   interval: 15m
   chart:
@@ -25,18 +25,14 @@ spec:
       tag: 1.155.0
     env:
       TZ: "${TZ}"
-      DATABASE_URL: ghostfolio-mysql
-      REDIS_HOST: localhost
-      REDIS_PORT: "6379"
-      ACCESS_TOKEN_SALT: ${SECRET_GHOST_MYSQL_PASSWORD}
-      JWT_SECRET_KEY: ${SECRET_GHOST_MYSQL_PASSWORD}
-      COMPOSE_PROJECT_NAME: ghostfolio
-      PORT: "3306"
+    envFrom:
+      - secretRef:
+          name: *app
     service:
       main:
         ports:
           http:
-            port: 3306
+            port: 5432
 
     ingress:
       main:
@@ -54,9 +50,9 @@ spec:
               - path: /
                 pathType: Prefix
         tls:
-          - hosts:
+          - secretName: ghostfolio-cert
+            hosts:
               - "ghostfolio.${SECRET_DOMAIN}"
-            secretName: "ghostfolio-tls"
 
     resources:
       requests:

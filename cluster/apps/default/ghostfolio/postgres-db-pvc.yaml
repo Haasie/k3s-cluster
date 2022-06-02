@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ghostfolio-db
+spec:
+  resources:
+    requests:
+      storage: 8Gi
