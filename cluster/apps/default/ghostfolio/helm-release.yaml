@@ -31,12 +31,12 @@ spec:
       ACCESS_TOKEN_SALT: ${SECRET_GHOST_MYSQL_PASSWORD}
       JWT_SECRET_KEY: ${SECRET_GHOST_MYSQL_PASSWORD}
       COMPOSE_PROJECT_NAME: ghostfolio
-      PORT: "3333"
+      PORT: "3306"
     service:
       main:
         ports:
           http:
-            port: 3333
+            port: 3306
 
     ingress:
       main:
