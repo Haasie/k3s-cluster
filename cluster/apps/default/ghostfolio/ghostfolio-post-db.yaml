@@ -26,7 +26,7 @@ spec:
         min_wal_size = 160
       persistence:
         enabled: true
-        existingClaim: ghostfolio-data
+        existingClaim: ghostfolio-data-1
 
       resources:
         requests:
