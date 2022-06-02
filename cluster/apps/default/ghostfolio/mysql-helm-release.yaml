@@ -2,7 +2,7 @@
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: ghost-mysql
+  name: ghostfolio-mysql
   namespace: default
 spec:
   interval: 5m
@@ -23,10 +23,10 @@ spec:
     architecture: standalone
     primary:
       persistence:
-        existingClaim: ghost-mysql-data
+        existingClaim: ghostfolio-mysql-data
     auth:
-      rootPassword: "${SECRET_GHOST_MYSQL_PASSWORD}"
-      database: ghost
-      username: ghost
-      password: "${SECRET_GHOST_MYSQL_PASSWORD}"
-      replicationPassword: "${SECRET_GHOST_MYSQL_PASSWORD}"
+      rootPassword: "${SECRET_GHOSTFOLIO_MYSQL_PASSWORD}"
+      database: ghostfolio
+      username: ghostfolio
+      password: "${SECRET_GHOSTFOLIO_MYSQL_PASSWORD}"
+      replicationPassword: "${SECRET_GHOSTFOLIO_MYSQL_PASSWORD}"
