@@ -5,10 +5,13 @@ metadata:
   name: postgresql-ghostfolio
   namespace: default
 spec:
+  accessModes:
+    - ReadWriteOnce
   values:
     auth:
       database: ghostfolio
       existingSecret: ghostfolio
+
 
     primary:
       persistence:
