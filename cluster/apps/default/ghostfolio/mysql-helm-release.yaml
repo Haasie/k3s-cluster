@@ -25,8 +25,8 @@ spec:
       persistence:
         existingClaim: ghostfolio-mysql-data
     auth:
-      rootPassword: "${SECRET_GHOSTFOLIO_MYSQL_PASSWORD}"
+      rootPassword: "${SECRET_GHOST_MYSQL_PASSWORD}"
       database: ghostfolio
       username: ghostfolio
-      password: "${SECRET_GHOSTFOLIO_MYSQL_PASSWORD}"
-      replicationPassword: "${SECRET_GHOSTFOLIO_MYSQL_PASSWORD}"
+      password: "${SECRET_GHOST_MYSQL_PASSWORD}"
+      replicationPassword: "${SECRET_GHOST_MYSQL_PASSWORD}"
