@@ -8,3 +8,4 @@ resources:
 #  - rss-to-telegram
   - rsst-to-telegram
   - ghost
+  - ghostfolio
