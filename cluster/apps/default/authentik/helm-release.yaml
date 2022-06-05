@@ -32,6 +32,16 @@ spec:
         - host: &host auth.${SECRET_DOMAIN_NAME}
           paths:
             - path: /
+      tls:
+        - secretName: auth-cert
+          hosts:
+            - "auth.${SECRET_DOMAIN}"
+
+    additionalContainers:
+      - name: broker
+        image: redis:7.0
+        imagePullPolicy: IfNotPresent
+
 
     geoip:
       enabled: true
@@ -67,8 +77,3 @@ spec:
       valuesKey: AUTHENTIK_GEOIP_LICENSE_KEY
       targetPath: geoip.licenseKey
       optional: false
-
-  additionalContainers:
-    - name: broker
-      image: redis:7.0
-      imagePullPolicy: IfNotPresent
