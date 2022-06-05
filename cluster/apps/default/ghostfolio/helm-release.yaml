@@ -22,7 +22,7 @@ spec:
       nameOverride: *app
     image:
       repository: ghostfolio/ghostfolio
-      tag: 1.155.0
+      tag: 1.156.0
     env:
       TZ: "${TIMEZONE}"
     envFrom:
