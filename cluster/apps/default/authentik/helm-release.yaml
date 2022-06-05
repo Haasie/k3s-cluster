@@ -68,12 +68,12 @@ spec:
 
   valuesFrom:
     - kind: Secret
-      name: authentik-secrets
+      name: authentik
       valuesKey: AUTHENTIK_GEOIP_ACCOUNT_ID
       targetPath: geoip.accountId
       optional: false
     - kind: Secret
-      name: authentik-secrets
+      name: authentik
       valuesKey: AUTHENTIK_GEOIP_LICENSE_KEY
       targetPath: geoip.licenseKey
       optional: false
