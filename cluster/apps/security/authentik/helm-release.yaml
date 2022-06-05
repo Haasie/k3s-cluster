@@ -30,12 +30,12 @@ spec:
       error_reporting:
         enabled: false
       postgresql:
-        host: "authentik-db-postgresql"
+        host: "authentik-postgresql"
         name: "authentik"
-        user: "postgres"
+        user: "authentik"
         password: "${SECRET_AUTHENTIK_POSTGRES_PASSWORD}"
       redis:
-        host: "localhost"
+        host: "authentik-redis-master"
       email:
         host: "smtp.gmail.com"
         port: 587
@@ -64,18 +64,19 @@ spec:
           hosts:
             - "auth.${SECRET_DOMAIN}"
 
-    additionalContainers:
-      - name: broker
-        image: redis:7.0
-        imagePullPolicy: IfNotPresent
+#    additionalContainers:
+#      - name: broker
+#        image: redis:7.0
+#        imagePullPolicy: IfNotPresent
 
     geoip:
       enabled: true
 
     postgresql:
-      enabled: false
+      enabled: true
+      postgresqlPassword: "${SECRET_AUTHENTIK_POSTGRES_PASSWORD}"
     redis:
-      enabled: false
+      enabled: true
 
   valuesFrom:
     - kind: Secret
