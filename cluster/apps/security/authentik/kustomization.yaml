@@ -4,5 +4,5 @@ kind: Kustomization
 resources:
   - helm-release.yaml
   - secret.sops.yaml
-  - authentik-post-db.yaml
-  - authentik-post-db-pvc.yaml
+#  - authentik-post-db.yaml
+#  - authentik-post-db-pvc.yaml
