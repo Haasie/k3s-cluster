@@ -25,11 +25,12 @@ spec:
       ingressClassName: "traefik"
       annotations:
         traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-        external-dns.alpha.kubernetes.io/target: "${SECRET_DOMAIN_NAME}"
+        cert-manager.io/cluster-issuer: "letsencrypt-production"
+        external-dns.alpha.kubernetes.io/target: "${SECRET_DOMAIN}"
         traefik.ingress.kubernetes.io/router.middlewares: "traefik-system-cloudflare-only@kubernetescrd"
         external-dns/is-public: "true"
       hosts:
-        - host: &host auth.${SECRET_DOMAIN_NAME}
+        - host: &host auth.${SECRET_DOMAIN}
           paths:
             - path: /
       tls:
