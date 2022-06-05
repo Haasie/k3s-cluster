@@ -57,9 +57,9 @@ spec:
         docker_image_base: ghcr.io/goauthentik/%(type)s:%(version)s
 
     postgresql:
-      enabled: true
+      enabled: false
     redis:
-      enabled: true
+      enabled: false
 
   valuesFrom:
     - kind: Secret
