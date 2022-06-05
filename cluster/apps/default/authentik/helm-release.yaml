@@ -61,12 +61,6 @@ spec:
     redis:
       enabled: false
 
-    prometheus:
-      rules:
-        create: true
-      serviceMonitor:
-        create: true
-
   valuesFrom:
     - kind: Secret
       name: authentik
