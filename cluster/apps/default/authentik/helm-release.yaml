@@ -47,9 +47,36 @@ spec:
     geoip:
       enabled: true
 
-    envFrom:
-      - secretRef:
-          name: *app
+
+    envValueFrom:
+      AUTHENTIK_EMAIL__FROM:
+        secretKeyRef:
+          name: authentik
+          key: AUTHENTIK_EMAIL__FROM
+      AUTHENTIK_SECRET_KEY:
+        secretKeyRef:
+          name: authentik
+          key: AUTHENTIK_SECRET_KEY
+      AUTHENTIK_POSTGRESQL__HOST:
+        secretKeyRef:
+          name: authentik
+          key: AUTHENTIK_POSTGRESQL__HOST
+      AUTHENTIK_POSTGRESQL__NAME:
+        secretKeyRef:
+          name: authentik
+          key: AUTHENTIK_POSTGRESQL__NAME
+      AUTHENTIK_POSTGRESQL__USER:
+        secretKeyRef:
+          name: authentik
+          key: AUTHENTIK_POSTGRESQL__USER
+      AUTHENTIK_POSTGRESQL__PASSWORD:
+        secretKeyRef:
+          name: authentik
+          key: AUTHENTIK_POSTGRESQL__PASSWORD
+      AUTHENTIK_REDIS__HOST:
+        secretKeyRef:
+          name: authentik
+          key: AUTHENTIK_REDIS__HOST
 
     authentik:
       log_level: debug
@@ -60,6 +87,7 @@ spec:
       enabled: false
     redis:
       enabled: false
+
 
   valuesFrom:
     - kind: Secret
