@@ -9,3 +9,4 @@ resources:
   - rsst-to-telegram
   - ghost
   - ghostfolio
+  - authentik
