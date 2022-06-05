@@ -9,4 +9,4 @@ spec:
     middlewares:
       - name: cloudflare-only
       - name: security-auth
-        namespace: default
+        namespace: networking
