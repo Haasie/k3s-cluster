@@ -10,7 +10,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-production"
     traefik.ingress.kubernetes.io/router.entrypoints: "websecure"
-    traefik.ingress.kubernetes.io/router.middlewares: "networking-local-only-access@kubernetescrd"
+    traefik.ingress.kubernetes.io/router.middlewares: "networking-external-auth@kubernetescrd"
 spec:
   ingressClassName: "traefik"
   rules:
