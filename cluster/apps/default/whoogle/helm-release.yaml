@@ -20,7 +20,7 @@ spec:
   values:
     image:
       repository: benbusby/whoogle-search
-      tag: 0.7.3
+      tag: 0.7.4
     ingress:
       main:
         enabled: true
