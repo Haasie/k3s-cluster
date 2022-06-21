@@ -48,6 +48,11 @@ spec:
           url: http://pi.hole/admin
           icon: pi-hole
       groups:
+        - name: Shopping
+          links:
+            - name: Satsback
+              url: "https://satsback.com"
+              icon: bitcoin
         - name: Communicate
           links:
             - name: Discord
