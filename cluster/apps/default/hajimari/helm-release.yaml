@@ -52,13 +52,12 @@ spec:
           links:
             - name: Satsback
               url: "https://satsback.com"
-              icon: bitcoin
         - name: Communicate
           links:
             - name: Discord
               url: "https://discord.com"
-            - name: Gmail
-              url: "https://gmail.com"
+            - name: Proton Mail
+              url: "https://account.proton.me/login?language=en"
             - name: Slack
               url: "https://slack.com/signin"
         - name: Cloud
