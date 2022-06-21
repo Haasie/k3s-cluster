@@ -62,10 +62,8 @@ spec:
               url: "https://slack.com/signin"
         - name: Cloud
           links:
-            - name: Box
-              url: "https://box.com"
-            - name: Dropbox
-              url: "https://dropbox.com"
+            - name: Balena cloud
+              url: "https://dashboard.balena-cloud.com"
             - name: Drive
               url: "https://drive.google.com"
         - name: Design
@@ -84,6 +82,8 @@ spec:
               url: "https://devdocs.io"
             - name: Devhints
               url: "https://devhints.io"
+            - name: GitHub
+              url: "https://github.com/haasie"
         - name: Lifestyle
           links:
             - name: Design Milk
@@ -116,6 +116,23 @@ spec:
               url: "https://theverge.com/"
             - name: MIT Technology Review
               url: "https://www.technologyreview.com/"
+        - name: Cyberskilzzz
+          links:
+            - name: TryHackMe
+              url: "https://tryhackme.com"
+            - name: Certifiedsecure
+              url: "https://www.certifiedsecure.com"
+            - name: Blue Team Labs
+              url: "https://blueteamlabs.online"
+            - name: Cyberdefenders
+              url: "https://cyberdefenders.org/"
+            - name: HackTheBox
+              url: "https://www.hackthebox.com/"
+        - name: Learning & Development
+          links:
+            - name: Udemy
+              url: "https://udemy.com"
+
     ingress:
       main:
         enabled: true
