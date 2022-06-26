@@ -24,6 +24,7 @@ spec:
       retries: 3
   values:
     alertmanager:
+      enable: "true"
       config:
         global:
           telegram_api_url: "${SECRET_TELEGRAM_API_URL}"

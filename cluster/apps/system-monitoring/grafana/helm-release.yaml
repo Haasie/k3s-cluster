@@ -141,7 +141,7 @@ spec:
         hajimari.io/enable: "true"
         hajimari.io/icon: "chart-bell-curve"
         hajimari.io/appName: "grafana"
-        traefik.ingress.kubernetes.io/router.middlewares: "networking-cloudflare-only@kubernetescrd"
+        traefik.ingress.kubernetes.io/router.middlewares: "networking-external-auth@kubernetescrd"
       hosts:
         - "grafana.${SECRET_DOMAIN}"
       tls:
