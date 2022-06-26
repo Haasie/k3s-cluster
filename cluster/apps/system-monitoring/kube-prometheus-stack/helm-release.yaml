@@ -27,14 +27,13 @@ spec:
       enable: true
       config:
         global:
-          telegram_api_url: "${SECRET_TELEGRAM_API_URL}"
+          telegram_api_url: "https://api.telegram.org"
           resolve_timeout: 5m
         receivers:
           - name: "null"
           - name: "telegram"
             telegram_configs:
               - send_resolved: "true"
-                api_url:
                 bot_token: "${SECRET_TELEGRAM_USER_TOKEN}"
                 chat_id: "${SECRET_TELEGRAM_USER_ID}"
                 disable_notifications:
