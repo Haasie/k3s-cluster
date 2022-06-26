@@ -33,12 +33,12 @@ spec:
           - name: "null"
           - name: "telegram"
             telegram_configs:
-              - send_resolved: 'true'
+              - send_resolved: "true"
                 bot_token: "${SECRET_TELEGRAM_USER_TOKEN}"
                 chat_id: "${SECRET_TELEGRAM_USER_ID}"
                 message: |-
                   {{ template "telegram.default.message" .}}
-                parse_mode: :MarkdownV2"
+                parse_mode: "MarkdownV2"
         route:
           group_by: ['alertname', 'job']
           group_wait: 30s
