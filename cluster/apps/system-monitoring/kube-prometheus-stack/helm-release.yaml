@@ -24,20 +24,21 @@ spec:
       retries: 3
   values:
     alertmanager:
-      enable: "true"
+      enable: true
       config:
         global:
           telegram_api_url: "${SECRET_TELEGRAM_API_URL}"
           resolve_timeout: 5m
         receivers:
-          - name: 'null'
-          - name: 'telegram'
+          - name: "null"
+          - name: "telegram"
             telegram_configs:
               - send_resolved: 'true'
                 bot_token: "${SECRET_TELEGRAM_USER_TOKEN}"
                 chat_id: "${SECRET_TELEGRAM_USER_ID}"
-                message: '{{ template "telegram.default.message" .}}'
-                parse_mode: "MarkdownV2"
+                message: |-
+                  {{ template "telegram.default.message" .}}
+                parse_mode: :MarkdownV2"
         route:
           group_by: ['alertname', 'job']
           group_wait: 30s
