@@ -83,37 +83,37 @@ spec:
             editable: true
             options:
               path: /var/lib/grafana/dashboards/default
-    datasources:
-      datasources.yaml:
-        apiVersion: 1
-        datasources:
-          - name: Prometheus
-            type: prometheus
-            access: proxy
-            url: http://kube-prometheus-stack-prometheus:9090/
+#    datasources:
+#      datasources.yaml:
+#        apiVersion: 1
+#        datasources:
+#          - name: Prometheus
+#            type: prometheus
+#            access: proxy
+#            url: http://kube-prometheus-stack-prometheus:9090/
         # - name: Loki
         #   type: loki
         #   access: proxy
         #   url: http://loki:3100
-    dashboards:
-      default:
-        # Ref: https://grafana.com/grafana/dashboards/12175
-        calico-felix:
-          gnetId: 12175
-          revision: 5
-          datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/2842
-        flux-cluster:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
-          datasource: Prometheus
-        flux-control-plane:
-          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
-          datasource: Prometheus
-        # Ref: https://grafana.com/grafana/dashboards/14837
-        authentik:
-          gnetId: 14837
-          revision: 2
-          datasource: Prometheus
+#    dashboards:
+#      default:
+#        # Ref: https://grafana.com/grafana/dashboards/12175
+#        calico-felix:
+#          gnetId: 12175
+#          revision: 5
+#          datasource: Prometheus
+#        # Ref: https://grafana.com/grafana/dashboards/2842
+#        flux-cluster:
+#          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/cluster.json
+#          datasource: Prometheus
+#        flux-control-plane:
+#          url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/grafana/dashboards/control-plane.json
+#          datasource: Prometheus
+#        # Ref: https://grafana.com/grafana/dashboards/14837
+#        authentik:
+#          gnetId: 14837
+#          revision: 2
+#          datasource: Prometheus
       # blocky:
       #   url: https://raw.githubusercontent.com/0xERR0R/blocky/master/docs/blocky-grafana.json
       #   datasource: Prometheus
