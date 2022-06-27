@@ -43,6 +43,12 @@ spec:
         password: "${SECRET_ALERT_MAIL_PASSWORD}"
         from: "auth@${SECRET_DOMAIN}"
 
+    prometheus:
+      serviceMonitor:
+        create: true
+      rules:
+        create: true
+
     ingress:
       enabled: true
       ingressClassName: "traefik"
