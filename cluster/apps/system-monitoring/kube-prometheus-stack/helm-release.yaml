@@ -29,11 +29,9 @@ spec:
           resolve_timeout: 5m
         receivers:
           - name: 'null'
-          - name: telegram
-            telegram_configs:
-              - send_resolved: true
-                bot_token: "${SECRET_TELEGRAM_USER_TOKEN}"
-                chat_id: "${SECRET_TELEGRAM_USER_ID}"
+          - name: default
+            webhook_configs:
+              - url: "http://alertmanager-notifier.system-monitoring.svc.cluster.local:8899/alert"
         route:
           group_by: ['alertname', 'job']
           group_wait: 30s
@@ -44,7 +42,7 @@ spec:
             - receiver: 'null'
               match:
                 alertname: Watchdog
-            - receiver: telegram
+            - receiver: default
               match_re:
                 severity: critical|warning|error
               continue: true
