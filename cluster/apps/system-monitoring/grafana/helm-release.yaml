@@ -53,11 +53,11 @@ spec:
       grafana_net:
         url: https://grafana.net
       auth:
-        signout_redirect_url: https://auth.${SECRET_DOMAIN}/application/o/grafana/end-session/
+        signout_redirect_url: https://auth.${SECRET_DOMAIN}/if/session-end/grafana/
         disable_login_form: true
         oauth_auto_login: true
       auth.anonymous:
-        enabled: true
+        enabled: false
         org_name: Main Org.
         org_role: Viewer
         hide_version: true
@@ -141,7 +141,7 @@ spec:
         hajimari.io/enable: "true"
         hajimari.io/icon: "chart-bell-curve"
         hajimari.io/appName: "grafana"
-        traefik.ingress.kubernetes.io/router.middlewares: "networking-external-auth@kubernetescrd"
+        traefik.ingress.kubernetes.io/router.middlewares: "networking-cloudflare-only@kubernetescrd"
       hosts:
         - "grafana.${SECRET_DOMAIN}"
       tls:
