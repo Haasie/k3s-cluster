@@ -136,6 +136,13 @@ spec:
         enabled: true
         port: 2381
         targetPort: 2381
+    traefik:
+      endpoints:
+        - 192.168.1.11
+      service:
+        enable: true
+        port: 8082
+        targetPort: 8082
     prometheus:
       ingress:
         enabled: true
