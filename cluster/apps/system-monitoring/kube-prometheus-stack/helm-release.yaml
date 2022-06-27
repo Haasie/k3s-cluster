@@ -26,26 +26,14 @@ spec:
     alertmanager:
       config:
         global:
-          slack_api_url: "${SECRET_PROMETHEUS_DISCORD_ALERTS_WEBHOOK}"
           resolve_timeout: 5m
         receivers:
           - name: 'null'
-          - name: discord
-            slack_configs:
-              - channel: "#alerts"
-                icon_url: https://avatars3.githubusercontent.com/u/3380462
-                username: alert-bot
-                send_resolved: true
-                title: |-
-                  [{{ .Status | toUpper }}{{ if eq .Status "firing" }}:{{ .Alerts.Firing | len }}{{ end }}] {{ if ne .CommonAnnotations.summary ""}}{{ .CommonAnnotations.summary }}{{ else }}{{ .CommonLabels.alertname }}{{ end }}
-                text: >-
-                  {{ range .Alerts -}}
-                    **Alert:** {{ .Annotations.title }}{{ if .Labels.severity }} - `{{ .Labels.severity }}`{{ end }}
-                  **Description:** {{ if ne .Annotations.description ""}}{{ .Annotations.description }}{{else}}N/A{{ end }}
-                  **Details:**
-                    {{ range .Labels.SortedPairs }} • *{{ .Name }}:* `{{ .Value }}`
-                    {{ end }}
-                  {{ end }}
+          - name: telegram
+            telegram_configs:
+              - send_resolved: true
+                bot_token: "${SECRET_TELEGRAM_USER_TOKEN}"
+                chat_id: "${SECRET_TELEGRAM_USER_ID}"
         route:
           group_by: ['alertname', 'job']
           group_wait: 30s
@@ -56,7 +44,7 @@ spec:
             - receiver: 'null'
               match:
                 alertname: Watchdog
-            - receiver: discord
+            - receiver: telegram
               match_re:
                 severity: critical|warning|error
               continue: true
