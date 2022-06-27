@@ -114,7 +114,7 @@ spec:
           revision: 2
           datasource: Prometheus
         traefik:
-          gnetID: 12250
+          gnetId: 12250
           datasource: Prometheus
       # blocky:
       #   url: https://raw.githubusercontent.com/0xERR0R/blocky/master/docs/blocky-grafana.json
