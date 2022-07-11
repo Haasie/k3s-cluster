@@ -14,4 +14,4 @@ resources:
   - flux-system
   - media
   - security
-  - system-monitoring
+#  - system-monitoring  # Off until RAM upgrade
